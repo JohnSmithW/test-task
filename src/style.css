@@ -1,0 +1,145 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  max-width: 1300px;
+}
+
+.product-grid.masonry {
+  column-count: 4;
+  column-gap: 20px;
+  padding: 20px;
+}
+
+.product-grid.masonry .product-card {
+  break-inside: avoid;
+  margin-bottom: 20px;
+  display: inline-block;
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px 8px 0 0;
+  display: block;
+  object-fit: cover;
+}
+
+.product-card .content {
+  padding: 15px;
+}
+
+.product-card h3 {
+  font-size: 1.1rem;
+  margin: 0 0 10px;
+  color: #333;
+}
+
+.product-card .price {
+  font-weight: bold;
+  color: #e67e22;
+  margin-bottom: 8px;
+}
+
+.product-card .rating {
+  color: #f1c40f;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.product-card .rating-value {
+  color: #666;
+  font-size: 0.9em;
+  margin-left: 8px;
+}
+
+.product-card .category {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 1024px) {
+  .product-grid.masonry {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .product-grid.masonry {
+    column-count: 1;
+  }
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.filters select, 
+.filters input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.filters button {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-card {
+  animation: cardEntrance 0.6s ease-out both;
+  animation-delay: calc(var(--index) * 0.1s);
+}
+
+.product-grid.masonry .product-card {
+  --index: 0;
+  animation: cardEntrance 0.6s ease-out both;
+  animation-delay: calc(var(--index) * 0.1s);
+}
